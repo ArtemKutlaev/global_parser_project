@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все банки</title>
+    <link rel="stylesheet" href="static/styles/style.css">
+    <link rel="icon" href="data:;base64,=">
+</head>
+<body>
+    <div class="container">
+        <div class="filter-and-title">
+            <div class="filter-controls">
+                <label for="filter">Выбери фильтр:</label>
+                <select name="filter" id="filter">
+                    <option value="all">Все банки</option>
+                    <option value="rsb">Только Банк Русский стандарт</option>
+                    <option value="gazprombank">Только Газпромбанк</option>
+                </select>
+                <input type="button" value="Выбрать">
+            </div>
+            <h1>Все банки</h1>
+        </div>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <th>bank</th>
+                <th>title</th>
+                <th>news</th>
+                <th>data</th>
+                <th>data_parsing</th>
+                <th>time_parsing</th>
+            </tr>
+            {%for all in all %}
+            <tr>
+                <td>{{all[1]}}</td>
+                <td>{{all[2]}}</td>
+                <td>{{all[3]}}</td>
+                <td>{{all[4]}}</td>
+                <td>{{all[5]}}</td>
+                <td>{{all[6]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
