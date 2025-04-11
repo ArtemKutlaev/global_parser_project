@@ -16,6 +16,13 @@ c.execute('''
     )
 ''')
 db.commit()
+c.execute('''
+    CREATE TABLE IF NOT EXISTS reg_db(
+        login TEXT,
+        password TEXT
+    )
+''')
+db.commit()
 
 def clear_database():
     #Функция для очистки базы данных.
