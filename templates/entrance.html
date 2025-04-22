@@ -8,7 +8,7 @@
     <link rel="icon" href="data:;base64,=">
 </head>
 <body>
-    <form id="main-form" onsubmit="return CheckReg(this)" method="post">
+    <form id="main-form" onsubmit="return CheckReg(this, event)" method="POST">
     <div class="registration">
         <p class="entrance">Вход в систему</p>
         <div class="input-login">
@@ -24,8 +24,10 @@
         <div class="submit">
         <input type="submit" placeholder="Подтвердить" id="entrance">
         </div>
+        <div id="error" class="error"></div>
     </div>
     </form>
+    
     <script src="static/Js/entrance.js"></script>
 </body>
  

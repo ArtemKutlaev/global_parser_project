@@ -1,73 +1,80 @@
 body {
     margin: 0;
-    height: 100vh; /* Высота экрана */
+    height: 100vh;
     display: flex;
-    justify-content: center; /* Горизонтальное центрирование */
-    align-items: center; /* Вертикальное центрирование */
-    background-color: #f0f0f0; /* Светлый фон для страницы */
-    font-family: sans-serif; /* Базовый шрифт */
+    justify-content: center; 
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: sans-serif; 
   }
   
-  .registration {
-    display: block;
-    text-align: center;
-    border: 1px solid #ccc; /* Более приятный цвет границы */
-    max-width: 400px; /* Уменьшил немного ширину для лучшего вида */
-    padding: 20px; /* Увеличил padding */
-    border-radius: 10px; /* Скругленные углы */
-    background-color: #fff; /* Белый фон для блока */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
-    box-sizing: border-box; /* Важно для правильного расчета размеров */
-    width: 100%; /* Занимает всю ширину родителя */
-    height: auto; /* Автоматическая высота */
+.registration {
+  display: block;
+  text-align: center;
+  border: 1px solid #ccc;
+  max-width: 400px; 
+  padding: 20px;
+  border-radius: 10px; 
+  background-color: #fff; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; 
+  width: 100%; 
+  height: auto; 
+}
+  
+.entrance {
+  font-size: 24px;
+  margin-bottom: 20px; 
+  color: #333; 
   }
   
-  .entrance {
-    font-size: 24px;
-    margin-bottom: 20px; 
-    color: #333; 
-  }
+.input-login,
+.password-login {
+  width: 100%;
+  margin-bottom: 15px;
+}
   
-  .input-login,
-  .password-login {
-    width: 100%;
-    margin-bottom: 15px;
-  }
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
   
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none; 
+  border-color: #66afe9;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
   
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    outline: none; 
-    border-color: #66afe9;
-    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
-  }
+.submit {
+  width: 100%;
+}
   
-  .submit {
-    width: 100%;
-  }
+input[type="submit"] {
+  background-color: #4CAF50; 
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
   
-  input[type="submit"] {
-    background-color: #4CAF50; 
-    color: white;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #3e8e41; 
-  }
-  
+input[type="submit"]:hover {
+  background-color: #3e8e41; 
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
  

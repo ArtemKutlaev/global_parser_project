@@ -6,3 +6,4 @@ transliterate
 fastapi
 uvicorn
 jinja2
+pydantic
