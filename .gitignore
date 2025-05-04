@@ -13,4 +13,5 @@ ENV/
 thumbs.db
 *.pyc
 base.db
+.env
 

@@ -6,6 +6,8 @@ from fastapi.responses import HTMLResponse
 from database import get_gazprombank, get_rsb, get_all
 from model import registration_data
 from cipher import authenticate_user
+from token_jwt import generate_token, verify_token
+import jwt
 
 app = FastAPI()
 
@@ -14,19 +16,29 @@ templates = Jinja2Templates(directory="templates")
 
 
 @app.get("/gazprombank", response_class=HTMLResponse)
-async def gazprombank(request: Request):
-    gazprombank = get_gazprombank()
-    return templates.TemplateResponse("gazprombank.html", {"request": request,"gazprombank": gazprombank})
+async def gazprombank(request: Request, token : Optional[str] = None):
+    if verify_token(token, '/gazprombank') == 3:    
+        gazprombank = get_gazprombank()
+        return templates.TemplateResponse("gazprombank.html", {"request": request,"gazprombank": gazprombank})
+    else:
+        return templates.TemplateResponse('entrance.html', {"request":request}) 
 
 @app.get("/rsb", response_class=HTMLResponse)
-async def rsb(request: Request):
-    rsb = get_rsb()
-    return templates.TemplateResponse('rsb.html', {"request":request, "rsb": rsb})
+async def rsb(request: Request, token : Optional[str] = None):
+    if verify_token(token, '/rsb') == 2:
+        rsb = get_rsb()
+        return templates.TemplateResponse('rsb.html', {"request":request, "rsb": rsb})
+    else:
+        return templates.TemplateResponse('entrance.html', {"request":request})
+    
 
 @app.get("/all", response_class=HTMLResponse)
-async def all(request: Request):
-    all = get_all()
-    return templates.TemplateResponse('all.html', {"request":request, "all": all})
+async def all(request: Request, token : Optional[str] = None):
+    if verify_token(token, '/all') == 1:
+        all = get_all()
+        return templates.TemplateResponse('all.html', {"request":request, "all": all})
+    else:
+        return templates.TemplateResponse('entrance.html', {"request":request})
 
 @app.get('/', response_class=HTMLResponse)
 async def entrance_post(request:Request):
@@ -43,16 +55,33 @@ async def registration(reg: registration_data):
     user_id = authenticate_user(login, password)
     if user_id == 1:
         url = '/all'
-        access = 1
+        token = generate_token(user_id, "/all")
     elif user_id == 2:
         url = '/rsb'
-        access = 2
+        token = generate_token(user_id, "/rsb")
     elif user_id == 3:
         url = '/gazprombank'
-        access = 3
+        token = generate_token(user_id, "/gazprombank")
     else:
         return {'redirect_url': None}
-    return {'redirect_url':url}
+    return {"redirect_url": f"{url}?token={token}"}
+
+@app.post('/parser')
+async def change(request : Request):
+    data = await request.json()
+    value = data["value"]
+    if value == "rsb":
+        rsb = get_rsb()
+        return templates.TemplateResponse('rsb.html',{ 'request' : request, "rsb": rsb})
+    elif value == 'gazprombank':
+        gazprombank = get_gazprombank()
+        return templates.TemplateResponse("gazprombank.html", {"request": request,"gazprombank": gazprombank})
+    else:
+        all_banks = get_all()
+        return templates.TemplateResponse('all.html', {"request":request, "all": all_banks})
+           
+    
+    
 
         
 
