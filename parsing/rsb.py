@@ -14,6 +14,12 @@ error_log = []
 err = "Ошибок при парсинге Банка Русский Стандарт не обнаружено"
 
 def send_error_report(errors):
+    """
+    Функция отправляет оишибки на почту
+    
+    Args:
+        Принимает list error_log содержащий ошибки при парсинге
+    """
     if not errors:
         return
     # Настройки для отправки почты
@@ -38,6 +44,10 @@ def send_error_report(errors):
 
 
 def scrape_rsb_news():
+    """
+    Функция парсит новости с сайта https://www.rsb.ru/press-center/news
+
+    """
     # Создание fake useragent, чтобы избегать ошибки <Response [403]>
     random_user_agent = fake_useragent.UserAgent().random
     header = {'user-agent': random_user_agent}

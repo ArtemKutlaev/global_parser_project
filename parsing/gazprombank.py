@@ -17,6 +17,12 @@ error_log = []  # Список для хранения ошибок
 err = "Ошибок при парсинге банка Газпромбанк не обнаружено"
 
 def send_error_report(errors):
+    """
+    Функция отправляет оишибки на почту
+    
+    Args:
+        Принимает list error_log содержащий ошибки при парсинге
+    """
     if not errors:
         return
     # Настройки для отправки почты
@@ -38,6 +44,10 @@ def send_error_report(errors):
         print(f"Не удалось отправить отчет об ошибках: {e}")
 
 def scrape_gazprombank_news():
+    """
+    Функция парсит новости с сайта https://www.gazprombank.ru/press/press/
+
+    """
     random_user_agent = fake_useragent.UserAgent().random
     header = {'user-agent': random_user_agent}
     global page
