@@ -103,7 +103,9 @@ global_parser_project/
 ├── month.py                       # Обработка дат
 ├── parsing_main.py                # Запуск парсеров
 ├── token_jwt.py                   # Генерация и проверка JWT
-└── README.md
+├── README.md
+└── requirements.txt
+
 ```
 
 ---
