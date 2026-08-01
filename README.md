@@ -83,8 +83,12 @@
 global_parser_project/
 │
 ├── static/
+│   │── js/
+│   │    ├── all.js
+│   │    └── entrance.js
 │   └── styles/
-│       └── style.css              # Стили интерфейса
+│        ├── style.css # Стили для страниц парсинга
+│        └── entrance.css # Стили для страницы авторизации
 │
 ├── templates/
 │   ├── all.html                   # Просмотр всех новостей
